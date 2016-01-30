@@ -58,7 +58,7 @@ void OverlappedAnalogRead::startConvertingPin(uint8_t pin) {
 
 void OverlappedAnalogRead::checkConversion() {
   // ADSC is cleared when the conversion finishes
-  if (bit_is_set(ADCSRA, ADSC)) {
+  if (state == CONVERTING && bit_is_set(ADCSRA, ADSC)) {
     state = DONE;
   }
 }
